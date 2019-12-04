@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 /**
- * @description La clase CrearPersonaComponent permite crear personas
+ * @description Esta clase permite enviar un mensaje String a la vista de bienvenida
  * @author Andres David Cabarcas Mestra
  */
 
