@@ -66,4 +66,5 @@ public interface IGestionarPersonajeLocal {
 	 */
 	public List<PersonajeDTO> consultaPersonaje();
 
+	public List<PersonajeDTO> consultaPersonaje(Long idComic);
 }

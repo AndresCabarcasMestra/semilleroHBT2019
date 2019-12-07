@@ -2,9 +2,10 @@ package com.hbt.semillero.dto;
 
 import java.io.Serializable;
 
+
 import com.hbt.semillero.entidad.EstadoEnum;
 
-public class PersonajeDTO implements Serializable {
+public class RolDTO implements Serializable {
 
 	/**
 	 * 
@@ -14,12 +15,8 @@ public class PersonajeDTO implements Serializable {
 	private Long id;
 
 	private String nombre;
-
-	private Long idComic;
-
+	
 	private EstadoEnum estado;
-
-	private String superpoder;
 
 	public Long getId() {
 		return id;
@@ -37,14 +34,6 @@ public class PersonajeDTO implements Serializable {
 		this.nombre = nombre;
 	}
 
-	public Long getIdComic() {
-		return idComic;
-	}
-
-	public void setIdComic(Long idComic) {
-		this.idComic = idComic;
-	}
-
 	public EstadoEnum getEstado() {
 		return estado;
 	}
@@ -52,28 +41,21 @@ public class PersonajeDTO implements Serializable {
 	public void setEstado(EstadoEnum estado) {
 		this.estado = estado;
 	}
-
-	public String getSuperpoder() {
-		return superpoder;
-	}
-
-	public void setSuperpoder(String superpoder) {
-		this.superpoder = superpoder;
-	}
+	
 
 	/**
-	 * Método encargado de convertir los datos recibidos en JSON al tipo ComicDTO.
+	 * Método encargado de convertir los datos recibidos en JSON al tipo RolDTO.
 	 * <b>Caso de Uso:</b>
 	 * 
 	 * @param arg Cadena que representa el objeto complejo JSON.
 	 * @return Instancia con los datos recibidos.
 	 */
-	public static PersonajeDTO valueOf(String arg) {
-		return JsonUtils.valueOf(arg, PersonajeDTO.class);
+	public static RolDTO valueOf(String arg) {
+		return JsonUtils.valueOf(arg, RolDTO.class);
 	}
 
 	/**
-	 * Método encargado de convertir los datos recibidos en ComicDTO al JSON
+	 * Método encargado de convertir los datos recibidos en RolDTO al JSON
 	 * esperado
 	 * 
 	 * @param dto DTO
