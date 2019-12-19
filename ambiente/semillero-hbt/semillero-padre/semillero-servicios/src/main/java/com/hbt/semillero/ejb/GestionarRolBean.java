@@ -1,11 +1,12 @@
+/**
+ * GestionarComicBean.java
+ */
 package com.hbt.semillero.ejb;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
-import javax.ejb.TransactionManagement;
-import javax.ejb.TransactionManagementType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -15,14 +16,12 @@ import com.hbt.semillero.dto.RolDTO;
 import com.hbt.semillero.entidad.Rol;
 
 /**
- * <b>Descripción:<b> Clase que determina el bean para realizar las gestion de
- * los Roles
+ * Clase que determina el bean para realizar las gestion de los roles
  * 
- * @author ccastano
+ * @author ANDRES CABARCAS
  * @version
  */
 @Stateless
-@TransactionManagement(TransactionManagementType.CONTAINER)
 public class GestionarRolBean implements IGestionarRolLocal {
 
 	final static Logger logger = Logger.getLogger(GestionarComicBean.class);
@@ -33,96 +32,92 @@ public class GestionarRolBean implements IGestionarRolLocal {
 	@PersistenceContext
 	private EntityManager em;
 
-	//metodo para crear un nuevo rol
 	@Override
 	public void crearRol(RolDTO rolDTO) {
-		logger.debug("Se inicia el metodo crear ROl");
+		// TODO Auto-generated method stub
+
+		logger.debug("Inicio del metodo 'crearRol'");
+
 		Rol rol = convertirDTOEntidad(rolDTO);
 		em.persist(rol);
-		logger.debug("Finaliza el metodo crear ROL");
 
+		logger.debug("Fin del metodo 'crearRol'");
 	}
 
 	@Override
-	public void modificarRol() {
-		logger.debug("Se inicia el metodo modificar rol");
+	public void modificarRol(Long id, String nombre, RolDTO rolDTO) {
+		// TODO Auto-generated method stub
 
-		logger.debug("Finaliza el metodo modificar rol");
+		logger.debug("Inicio del metodo 'modificarRol'");
 
+		logger.debug("Fin del metodo 'modificarRol'");
 	}
 
 	@Override
-	public void eliminarRol() {
-		logger.debug("Se inicia el metodo eliminarRol");
+	public void eliminarRol(Long idRol) {
+		// TODO Auto-generated method stub
 
-		logger.debug("Finaliza el metodo eliminarRol");
+		logger.debug("Inicio del metodo 'eliminarRol'");
+
+		logger.debug("Fin del metodo 'eliminarRol'");
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public RolDTO consultarRol() {
-		logger.debug("Se inicia el metodo consultarRol");
+	public List<RolDTO> consultarRoles() {
+		// TODO Auto-generated method stub
 
-		logger.debug("Finaliza el metodo consultarRol");
-		return null;
-	}
+		logger.debug("Inicio del metodo 'consultarRoles' ");
 
-	//metodo para consultar todos los roles en la tabla
-	@Override
-	public List<RolDTO> consultaRol() {
-		logger.debug("Se inicia el metodo consulta Rol");
-		String query = "SELECT ROL FROM rol Rol";
+		// Consulta todos los roles en la Tabla Rol
+		String qlString = "SELECT rol FROM Rol rol";
 
-		List<Rol> listaRol = em.createQuery(query).getResultList();
+		// listaRoles almacena todos los roles obtenido en la consulta
+		List<Rol> listaRoles = em.createQuery(qlString).getResultList();
 
-		List<RolDTO> listaRolDTO = new ArrayList<>();
+		// En listpersonajesDTO se almacenarán todos los elementos de listapersonajes
+		// pero en DTO
+		List<RolDTO> listaRolesDTO = new ArrayList<>();
 
-		for (Rol rol : listaRol) {
-			listaRolDTO.add(convertirEntidadDTO(rol));
+		for (Rol rol : listaRoles) {
+			listaRolesDTO.add(convertirDTOEntidad(rol));
 		}
 
-		logger.debug("Finaliza el metodo consulta ROl");
-		return listaRolDTO;
+		logger.debug("Fin del metodo 'consultarRoles' ");
+		return listaRolesDTO;
 	}
 
-	//metodo para consultar un rol en especifico
-	@Override
-	public List<RolDTO> consultaRol(Long idRol) {
-		logger.debug("Se inicia el metodo consulta Rol");
-		String query = "SELECT ROL FROM rol Rol WHERE ROL.id = : idRol";
-
-		List<Rol> listaRol = em.createQuery(query).setParameter("idRol", idRol).getResultList();
-
-		List<RolDTO> listaRolDTO = new ArrayList<>();
-
-		for (Rol rol : listaRol) {
-			listaRolDTO.add(convertirEntidadDTO(rol));
-		}
-
-		logger.debug("Finaliza el metodo consulta Rol");
-		return listaRolDTO;
-	}
-
-	//metodo para convertir un DTO a entidad
+	/**
+	 * 
+	 * Metodo encargado de transformar un RolDTO a una entidad rol
+	 * 
+	 * @param rolDTO
+	 * @return rol
+	 */
 	private Rol convertirDTOEntidad(RolDTO rolDTO) {
-		logger.debug("Se inicia el metodo convertirDTOEntidad");
 		Rol rol = new Rol();
+
 		rol.setId(rolDTO.getId());
 		rol.setNombre(rolDTO.getNombre());
 		rol.setEstado(rolDTO.getEstado());
-		logger.debug("Se inicia el metodo convertirDTOEntidad");
+
 		return rol;
 	}
 
-	//metodo para convertir una entidad a un DTO
-	private RolDTO convertirEntidadDTO(Rol rol) {
-		logger.debug("Se inicia el metodo convertirEntidadDTO");
-
+	/**
+	 * 
+	 * Metodo encargado de transformar un rol a una entidad rolDTO
+	 * 
+	 * @param rol
+	 * @return rolDTO
+	 */
+	private RolDTO convertirDTOEntidad(Rol rol) {
 		RolDTO rolDTO = new RolDTO();
+
 		rolDTO.setId(rol.getId());
 		rolDTO.setNombre(rol.getNombre());
-		rol.setEstado(rolDTO.getEstado());
-		logger.debug("Finaliza el metodo convertirEntidadDTO");
+		rolDTO.setEstado(rol.getEstado());
+
 		return rolDTO;
 	}
-
 }

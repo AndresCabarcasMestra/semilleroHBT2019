@@ -2,56 +2,48 @@ package com.hbt.semillero.ejb;
 
 import java.util.List;
 
-import com.hbt.semillero.dto.RolDTO;
+import javax.ejb.Local;
 
+import com.hbt.semillero.dto.PersonajeDTO;
+import com.hbt.semillero.dto.RolDTO;;
+
+/**
+ * Expone los métodos del EJB GestionarPersonaje Las interfaces determinan una
+ * especie de contrato donde se define las firmas de los metodos, define que se
+ * necesita implementar pero no el como eso lo realiza la clase que la
+ * implementa Palabras claves interface e implements
+ * 
+ * @author ANDRES CABARCAS
+ *
+ */
+@Local
 public interface IGestionarRolLocal {
-	/**
-	 * 
-	 * Metodo encargado de crear un Rol y persistirlo
-	 * 
-	 * @author ccastano
-	 * 
-	 * @param RolNuevo informacion nueva a crear
-	 */
-	public void crearRol(RolDTO RolNuevo);
 
 	/**
-	 * 
-	 * Metodo encargado de consultar un Rol modificarlo y guardarlo
-	 * 
-	 * @author ccastano
-	 * 
-	 * @param comicModificar informacion nueva a modificar
+	 * @description Metodo encargado de crear un rol y persistirlo
+	 * @param rolDTO informacion nueva a crear
 	 */
-	public void modificarRol();
+	public void crearRol(RolDTO rolDTO);
 
 	/**
+	 * @description Metodo encargado de consultar un rol, modificarlo y
+	 * guardarlo
 	 * 
-	 * Metodo encargado de eliminar un Rol modificarlo y guardarlo
-	 * 
-	 * @author ccastano
-	 * 
-	 * @param RolEliminar informacion a eliminar
+	 * @param rolDTO rol a modificar
+	 * @param nombre nuevo nombre del rol 
+	 * @param id id del rol a modificar
 	 */
-	public void eliminarRol();
+	public void modificarRol(Long id, String nombre, RolDTO rolDTO);
 
 	/**
-	 * 
-	 * Metodo encargado de retornar la informacion de un comic
-	 * 
-	 * @param idComic identificador del comic a ser consultado
-	 * @return comic Resultado de la consulta
-	 * @throws Exception si no se recibe idPersonaje
+	 * @description Metodo encargado de eliminar un rol
+	 * @param idRol informacion a eliminar
 	 */
-	public RolDTO consultarRol();
+	public void eliminarRol(Long idRol);
 
 	/**
-	 * 
-	 * Metodo encargado de retornar una lista de Personaje
-	 * 
-	 * @return
+	 * @description Metodo encargado de retornar una lista de roles
+	 * @return List<RolDTO> Lista de roles
 	 */
-	public List<RolDTO> consultaRol();
-
-	public List<RolDTO> consultaRol(Long idRol);
+	public List<RolDTO> consultarRoles();
 }

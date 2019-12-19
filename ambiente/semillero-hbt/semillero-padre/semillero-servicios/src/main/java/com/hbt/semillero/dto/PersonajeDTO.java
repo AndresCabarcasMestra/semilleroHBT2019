@@ -1,25 +1,24 @@
 package com.hbt.semillero.dto;
 
 import java.io.Serializable;
-
 import com.hbt.semillero.entidad.EstadoEnum;
 
+/**
+ * Clase que determina el dto a usar para modificar,
+ * consultar y posteriormente eliminar un personaje
+ * 
+ * @author ANDRES CABARCAS
+ */
 public class PersonajeDTO implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	private Long id;
-
 	private String nombre;
-
 	private Long idComic;
-
+	private Long idRol;
 	private EstadoEnum estado;
-
-	private String superpoder;
+	private String superPoder;
 
 	public Long getId() {
 		return id;
@@ -44,6 +43,14 @@ public class PersonajeDTO implements Serializable {
 	public void setIdComic(Long idComic) {
 		this.idComic = idComic;
 	}
+	
+	public Long getIdRol() {
+		return idRol;
+	}
+
+	public void setIdRol(Long idRol) {
+		this.idRol = idRol;
+	}
 
 	public EstadoEnum getEstado() {
 		return estado;
@@ -53,17 +60,17 @@ public class PersonajeDTO implements Serializable {
 		this.estado = estado;
 	}
 
-	public String getSuperpoder() {
-		return superpoder;
+	public String getSuperPoder() {
+		return superPoder;
 	}
 
-	public void setSuperpoder(String superpoder) {
-		this.superpoder = superpoder;
+	public void setSuperPoder(String superPoder) {
+		this.superPoder = superPoder;
 	}
 
 	/**
-	 * Método encargado de convertir los datos recibidos en JSON al tipo ComicDTO.
-	 * <b>Caso de Uso:</b>
+	 * Método encargado de convertir los datos recibidos en JSON al tipo
+	 * PersonajeDTO. <b>Caso de Uso:</b>
 	 * 
 	 * @param arg Cadena que representa el objeto complejo JSON.
 	 * @return Instancia con los datos recibidos.
@@ -76,12 +83,11 @@ public class PersonajeDTO implements Serializable {
 	 * Método encargado de convertir los datos recibidos en ComicDTO al JSON
 	 * esperado
 	 * 
-	 * @param dto DTO
-	 * 
 	 * @return Json
 	 */
 	@Override
 	public String toString() {
 		return JsonUtils.toStringJson(this);
 	}
+
 }

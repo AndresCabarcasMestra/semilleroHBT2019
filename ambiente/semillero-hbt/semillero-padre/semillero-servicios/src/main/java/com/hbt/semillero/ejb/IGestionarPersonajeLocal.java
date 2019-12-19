@@ -4,8 +4,8 @@ import java.util.List;
 
 import javax.ejb.Local;
 
-import com.hbt.semillero.dto.ComicDTO;
 import com.hbt.semillero.dto.PersonajeDTO;
+import com.hbt.semillero.dto.ResultadoDTO;;
 
 /**
  * Expone los métodos del EJB GestionarPersonaje Las interfaces determinan una
@@ -13,58 +13,50 @@ import com.hbt.semillero.dto.PersonajeDTO;
  * necesita implementar pero no el como eso lo realiza la clase que la
  * implementa Palabras claves interface e implements
  * 
- * @author ccastano
+ * @author ANDRES CABARCAS
  *
  */
 @Local
 public interface IGestionarPersonajeLocal {
-	/**
-	 * 
-	 * Metodo encargado de crear un Personaje y persistirlo
-	 * 
-	 * @author ccastano
-	 * 
-	 * @param comicNuevo informacion nueva a crear
-	 */
-	public void crearPersonaje(PersonajeDTO personajeNuevo);
 
 	/**
-	 * 
-	 * Metodo encargado de consultar un Personaje modificarlo y guardarlo
-	 * 
-	 * @author ccastano
-	 * 
-	 * @param comicModificar informacion nueva a modificar
+	 * @description Metodo encargado de crear un personaje y persistirlo
+	 * @param personajeDTO informacion nueva a crear
+	 * @return 
 	 */
-	public void modificarPersonaje();
+	public void crearPersonaje(PersonajeDTO personajeDTO);
 
 	/**
-	 * 
-	 * Metodo encargado de eliminar un Personaje modificarlo y guardarlo
-	 * 
-	 * @author ccastano
-	 * 
-	 * @param comicEliminar informacion a eliminar
+	 * @description Metodo encargado de consultar un personaje, modificarlo y
+	 *              guardarlo
+	 * @param personajeDTO informacion nueva a modificar
 	 */
-	public void eliminarPersonaje();
+	public void modificarPersonaje(Long id, String nombre, PersonajeDTO personajeDTO);
 
 	/**
-	 * 
-	 * Metodo encargado de retornar la informacion de un comic
-	 * 
-	 * @param idComic identificador del comic a ser consultado
-	 * @return comic Resultado de la consulta
-	 * @throws Exception si no se recibe idPersonaje
+	 * @description Metodo encargado de eliminar un personaje
+	 * @param idPersonaje informacion a eliminar
 	 */
-	public ComicDTO consultarPersonaje();
+	public void eliminarPersonaje(Long idPersonaje);
 
 	/**
-	 * 
-	 * Metodo encargado de retornar una lista de Personaje
-	 * 
-	 * @return
+	 * @description Metodo encargado de retornar una lista de personajes
+	 * @return List<PersonajeDTO> Lista de personajes
 	 */
-	public List<PersonajeDTO> consultaPersonaje();
+	public List<PersonajeDTO> consultarPersonajes();
 
-	public List<PersonajeDTO> consultaPersonaje(Long idComic);
+	/**
+	 * @description Metodo encargado de retornar una lista de personajes que
+	 *              pertenecen a un comic determinado
+	 * 
+	 * @return List<PersonajeDTO> Lista de personajes
+	 */
+	public List<PersonajeDTO> consultarPersonajes(Long idComic);
+
+	/**
+	 * @description Metodo para hacer pruebas de excepciones
+	 * 
+	 * @return List<PersonajeDTO> Lista de personajes
+	 */
+	public List<PersonajeDTO> consultarPersonajes(int index, String cadena);
 }

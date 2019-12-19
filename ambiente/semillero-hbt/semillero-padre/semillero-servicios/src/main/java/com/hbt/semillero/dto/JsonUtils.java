@@ -8,7 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * <b>Descripción:<b> Clase que determina las utilidades para convertir DTO de
  * entrada a objetos JSON y viceversa
  * 
- * @author
+ * @author ANDRES CABARCAS
  * 
  */
 public class JsonUtils {
