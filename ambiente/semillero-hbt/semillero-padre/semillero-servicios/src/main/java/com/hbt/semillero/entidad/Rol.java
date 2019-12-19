@@ -47,7 +47,7 @@ public class Rol implements Serializable{
 	@Id
 	@SequenceGenerator(allocationSize = 1, name = "ROL_ID_GENERATOR", sequenceName = "SEQ_ROL")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ROL_ID_GENERATOR")
-	@Column(name = "SRID")
+	@Column(name = "ROLID")
 	public Long getId() {
 		return id;
 	}
@@ -64,7 +64,7 @@ public class Rol implements Serializable{
 	 * 
 	 * @return El nombre asociado a la clase
 	 */
-	@Column(name = "SRNOMBRE")
+	@Column(name = "ROLNOMBRE")
 	public String getNombre() {
 		return nombre;
 	}
@@ -81,7 +81,7 @@ public class Rol implements Serializable{
 	 * 
 	 * @return El estado asociado a la clase
 	 */
-	@Column(name = "SRESTADO")
+	@Column(name = "ROLESTADO")
 	@Enumerated(value = EnumType.STRING)
 	public EstadoEnum getEstado() {
 		return estado;
