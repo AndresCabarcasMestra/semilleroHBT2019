@@ -20,7 +20,6 @@ import { ToastrModule } from 'ngx-toastr';
 // Componentes creados durante el desarrollo del Semillero
 import { NombreComponent } from './semillero/componentes/imprimirNombre/imprimir-nombre-component';
 import { ImprimirListaComponent } from './semillero/componentes/imprimirLista/imprimir-lista-component';
-import { ConsultarComicComponent } from './semillero/componentes/consultarComic/consultar-comic';
 
 // DTOs
 export { ComicDTO } from './semillero/dto/comic.dto';
@@ -41,8 +40,7 @@ import { GestionarClienteComponent } from './semillero/componentes/gestionarClie
     GestionarComicComponent,
     GestionarClienteComponent,
     NombreComponent,
-    ImprimirListaComponent,
-    ConsultarComicComponent
+    ImprimirListaComponent
   ],
   imports: [
     BrowserModule,

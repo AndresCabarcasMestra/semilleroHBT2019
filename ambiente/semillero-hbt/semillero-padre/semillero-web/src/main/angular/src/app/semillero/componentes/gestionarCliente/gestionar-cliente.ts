@@ -68,8 +68,7 @@ export class GestionarClienteComponent implements OnInit {
             nombre: [null, Validators.required],
             tipoDocumento: [null],
             numeroDoc: [null],
-            fechaNacimiento: [null],
-            comics: [null]
+            fechaNacimiento: [null]
         });
     }
 
@@ -104,23 +103,16 @@ export class GestionarClienteComponent implements OnInit {
 
         this.listaCliente.push(this.cliente);
 
+
         this.limpiarFormulario();
 
         // Se muestra una notificación confirmando el registro del nuevo cliente
         this.toastr.success('¡Se registró exitosamente el cliente:  "' + this.cliente.nombre + '"!');
     }
 
+    private GuardarDBcliente(){}
 
-    /**
-     * @description Metodo que permite visualizar todos los detalles de un cliente en
-     *  un nuevo componente
-     * 
-     * @param cliente
-     */
-    public ReadCliente(cliente: ClienteDTO): void {
-        this.router.navigate(['consultar-cliente', cliente]);
-        this.listaCliente.push(cliente);
-    }
+
 
 
     /**

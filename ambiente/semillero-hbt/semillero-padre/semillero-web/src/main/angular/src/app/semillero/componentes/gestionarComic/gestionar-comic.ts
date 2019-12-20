@@ -122,15 +122,6 @@ export class GestionarComicComponent implements OnInit {
     }
 
 
-    /**
-     * @description Metodo que permite visualizar todos los detalles de un comic en
-     *  un nuevo componente
-     * 
-     * @param comic 
-     */
-    public ReadComic(comic: ComicDTO): void {
-        this.router.navigate(['consultar-comic', comic]);
-    }
 
 
     /**

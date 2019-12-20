@@ -76,7 +76,6 @@
                             <td>{{cliente.numeroDoc | number: '.2'}}</td>
                             <td>{{cliente.fechaNacimiento| uppercase }}</td>
                             <td>
-                                <i class="fas fa-search 2x ml-1" (click)="ReadCliente(cliente)" title="Consultar"></i>
                                 <i class="fas fa-pencil-alt 2x ml-1" (click)="EditCliente(i)" title="Editar"></i>
                                 <i class="far fa-times-circle 2x ml-1" (click)="DeleteCliente(i)" title="Eliminar"></i>
                             </td>
