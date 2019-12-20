@@ -184,7 +184,7 @@ public class GestionarComicRest {
 	}
 	
 	@GET
-	@Path("/consultarComic")
+	@Path("/consultarComicInfo")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String informacionComic() {
 		String cadena ="";
