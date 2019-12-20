@@ -7,7 +7,6 @@ import { ComicDTO } from '../../dto/comic.dto';
  * @description Componenete consultar Comic, muestra la información de un
  * comic registrado
  * 
- * @author Luis Miguel Naranjo Pastrana <luismiguelnaranjop@gmail.com>
  */
 @Component({
     selector: 'consultar-comic',
@@ -24,7 +23,6 @@ export class ConsultarComicComponent implements OnInit {
     /**
      * 
      * @description Este es el constructor del componente ConsultarComicComponent
-     * @author Luis Miguel Naranjo Pastrana <luismiguelnaranjop@gmail.com>
      * 
      * @param fb 
      * @param activatedRoute 
@@ -47,7 +45,6 @@ export class ConsultarComicComponent implements OnInit {
 
     /**
      * @description Evento angular que se ejecuta al invocar el componente
-     * @author Luis Miguel Naranjo Pastrana <luismiguelnaranjop@gmail.com>
      */
     ngOnInit(): void {
 
@@ -81,7 +78,6 @@ export class ConsultarComicComponent implements OnInit {
 
     /**
      * @description Metodo que obtiene los datos recibidos por paramtro
-     * @author luis Miguel Naranjo Pastrana <luismiguelnaranjop@gmaol.com>
      */
     get p(){
         return this.activatedRoute.snapshot.params;

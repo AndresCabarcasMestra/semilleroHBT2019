@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 /**
  * @description Componente que imprime en pantalla una lista de objetos creados.
- * @author Luis Miguel Naranjo Pastrana <luismiguelnaranjop@gmail.com>
  */
 @Component({
     selector: 'imprimir-lista',

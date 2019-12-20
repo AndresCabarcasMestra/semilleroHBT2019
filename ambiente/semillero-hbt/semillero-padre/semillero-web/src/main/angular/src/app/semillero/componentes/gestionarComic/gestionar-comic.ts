@@ -79,7 +79,6 @@ export class GestionarComicComponent implements OnInit {
 
     /**
      * @description Evento angular que se ejecuta al invocar el componente
-     * @author Luis Miguel Naranjo Pastrana <luismiguelnaranjop@gmail.com>
      */
     ngOnInit(): void {
         console.log("Ingreso al evento onInit");

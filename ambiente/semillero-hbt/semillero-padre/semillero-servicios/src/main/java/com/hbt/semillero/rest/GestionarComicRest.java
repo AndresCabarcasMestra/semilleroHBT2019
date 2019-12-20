@@ -151,7 +151,7 @@ public class GestionarComicRest {
 		try {
 			listComicDTO =  gestionarComicEJB.consultarComics();			
 		} catch (ComicException e) {
-			logger.debug("Se capturó la excepción y la información es: Codigo "+e.getCodigo()+" - Mensaje: "+e.getMessage());
+			logger.debug("S: Codigo "+e.getCodigo()+" - Mensaje: "+e.getMessage());
 		}
 		
 		return listComicDTO;

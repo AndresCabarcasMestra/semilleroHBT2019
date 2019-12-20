@@ -31,7 +31,7 @@ export class NombreComponent implements OnInit {
      * @description Evento angular que se inicia para inicializar nuestras variables 
      */
     ngOnInit(): void {
-        this.nombre = "Luis Miguel Naranjo Pastrana"
-        this.ciudad = "Cienaga de Oro, Córdoba"
+        this.nombre = "Andres David Cabarcas Mestra"
+        this.ciudad = "Monteria"
     }
 }

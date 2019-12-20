@@ -36,6 +36,14 @@ export class MenuComponent implements OnInit {
     this.router.navigate(['gestionar-comic']);
   }
 
+    /**
+   * @description Metodo encargado de direccionar al componente de gestionar cliente
+   * @author Andres Cabarcas
+   */
+  public navegarGestionarCliente(): void {
+    this.router.navigate(['gestionar-cliente']);
+  }
+
   /**
    * @description Metodo encargado de direccionar al componente de gestionar comic
    * @author Diego Fernando Alvarez Silva <dalvarez@heinsohn.com.co>

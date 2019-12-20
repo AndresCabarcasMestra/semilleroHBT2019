@@ -1,0 +1,90 @@
+<div class="container">
+
+    <form [formGroup]="gestionarClienteForm">
+        <h1>Gestionar Cliente</h1>
+        <hr>
+
+        <input type="hidden" id="idCliente" formControlName="id">
+
+        <div class="row">
+            <div class="col-6">
+                <label for="nombreCliente">Nombre:</label>
+                <input type="text" class="form-control" id="nombreCliente" formControlName="nombre"
+                    [ngClass]="{ 'is-invalid': submitted && f.nombre.errors }" maxlength="50">
+                <div *ngIf="submitted && f.nombre.errors">
+                    <span class="text-danger" *ngIf="f.nombre.errors.required">Campo requerido.</span>
+                </div>
+            </div>
+
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="tipoDocumento">Tipo Documento:</label>
+                    <select class="form-control" id="tipoDocumento" formControlName="tipoDocumento">
+                        <option value="C.C">C.C</option>
+                        <option value="T.I">T.I</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <label for="numeroDoc">Numero Documento:</label>
+                <input type="text" class="form-control" id="numeroDoc" formControlName="numeroDoc">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <label for="fechaNacimiento">Fecha Nacimiento:</label>
+                <input type="text" class="form-control" id="fechaNacimiento" formControlName="fechaNacimiento">
+            </div>
+        </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-6">
+                <span></span>
+            </div>
+            <div class="col-6 text-right">
+                <button type="button" class="btn btn-primary" *ngIf="showCreateBtn" (click)="CreateCliente()">Registrar
+                    cliente</button>
+                <button type="button" class="btn btn-warning" *ngIf="showUpdateBtn" (click)="UpdateCliente">Guardar
+                    cambios</button>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="row" [hidden]="listaCliente.length === 0">
+            <div class="col-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">tipoDocumento</th>
+                            <th scope="col">numeroDoc</th>
+                            <th scope="col">fechaNacimiento</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let cliente of listaCliente;let i=index;">
+                            <th scope="row">{{cliente.id}}</th>
+                            <td>{{cliente.nombre | uppercase }}</td>
+                            <td>{{cliente.tipoDocumento | lowercase }}</td>
+                            <td>{{cliente.numeroDoc | number: '.2'}}</td>
+                            <td>{{cliente.fechaNacimiento| uppercase }}</td>
+                            <td>
+                                <i class="fas fa-search 2x ml-1" (click)="ReadCliente(cliente)" title="Consultar"></i>
+                                <i class="fas fa-pencil-alt 2x ml-1" (click)="EditCliente(i)" title="Editar"></i>
+                                <i class="far fa-times-circle 2x ml-1" (click)="DeleteCliente(i)" title="Eliminar"></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+
+</div>
