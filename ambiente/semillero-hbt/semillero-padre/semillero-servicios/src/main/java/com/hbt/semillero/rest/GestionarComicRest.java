@@ -182,5 +182,24 @@ public class GestionarComicRest {
 
 		return comicDTO;
 	}
+	
+	@GET
+	@Path("/consultarComic")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String informacionComic() {
+		String cadena ="";
+		List<ComicDTO> listComicDTO = null;
+		try {
+			listComicDTO =  gestionarComicEJB.consultarComics();
+			for	(int i=0; i<listComicDTO.size(); i++) {
+				cadena += "Nombre: "+listComicDTO.get(i).getNombre()+"\n"+"Precio: "+listComicDTO.get(i).getPrecio()+
+						"\n"+"Cantidad: "+listComicDTO.get(i).getCantidad()+"\n"+"Total Ventas:"+listComicDTO.get(i).getPrecioTotal()+"\n";
+			}
+		} catch (ComicException e) {
+			logger.debug("Se capturó la excepción y la información es: Codigo "+e.getCodigo()+" - Mensaje: "+e.getMessage());
+		}	
+		
+		return cadena;
+	}
 
 }

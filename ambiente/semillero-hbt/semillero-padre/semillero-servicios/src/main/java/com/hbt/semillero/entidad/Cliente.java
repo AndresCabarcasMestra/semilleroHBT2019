@@ -1,14 +1,7 @@
-/**
- * Personaje.java
- */
 package com.hbt.semillero.entidad;
-
-import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,14 +13,14 @@ import javax.persistence.Table;
 
 /**
  * Clase que determina la entidad que permite representar la tabla
- * "DB_SEMILLERO"."PERSONAJE"
+ * "DB_SEMILLERO"."CLIENTE"
  * 
  * @author ANDRES CABARCAS
  *
  */
 @Entity
-@Table(name = "PERSONAJE")
-public class Personaje implements Serializable {
+@Table(name = "CLIENTE")
+public class Cliente {
 
 	/**
 	 * Serializar es pasar un Objeto a un array de bytes y viceversa. Atributo que
@@ -40,43 +33,39 @@ public class Personaje implements Serializable {
 
 	private Long id;
 	private String nombre;
-	private Comic comic;
-	private Rol rol;
-	private EstadoEnum estado;
-	private String superPoder;
-
-	/**
-	 * Constructor de la clase
-	 */
-	public Personaje() {
-	}
-
+	private String tipoDocumento;
+	private Long numeroDoc;
+	private String fechaNacimiento;
+    private Comic comics;
+	
+    public Cliente() {}
+    
 	/**
 	 * Metodo encargado de retornar el valor del atributo id
 	 * 
 	 * @return El id asociado a la clase
 	 */
 	@Id
-	@SequenceGenerator(allocationSize = 1, name = "PERSONAJE_ID_GENERATOR", sequenceName = "SEQ_PERSONAJE")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PERSONAJE_ID_GENERATOR")
-	@Column(name = "PERS_ID")
+	@SequenceGenerator(allocationSize = 1, name = "CLIENTE_ID_GENERATOR", sequenceName = "SEQ_CLIENTE")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CLIENTE_ID_GENERATOR")
+	@Column(name = "CLI_ID")
 	public Long getId() {
 		return id;
 	}
-
+	
 	/**
 	 * @param id the id to set
 	 */
 	public void setId(Long id) {
 		this.id = id;
 	}
-
+	
 	/**
 	 * Metodo encargado de retornar el valor del atributo nombre
 	 * 
 	 * @return El nombre asociado a la clase
 	 */
-	@Column(name = "PERS_NOMBRE")
+	@Column(name = "CLI_NOMBRE")
 	public String getNombre() {
 		return nombre;
 	}
@@ -88,60 +77,46 @@ public class Personaje implements Serializable {
 		this.nombre = nombre;
 	}
 
-	/**
-	 * Metodo encargado de retornar comic al que pertenece el personaje
-	 * 
-	 * @return El comic asociado a la clase
-	 */
+	@Column(name = "CLI_TIPODOC")
+	public String getTipoDocumento() {
+		return tipoDocumento;
+	}
+
+	public void setTipoDocumento(String tipoDocumento) {
+		this.tipoDocumento = tipoDocumento;
+	}
+
+	@Column(name = "CLI_NUMDOC")
+	public Long getNumDoc() {
+		return numeroDoc;
+	}
+
+	public void setNumDoc(Long numero) {
+		this.numeroDoc = numero;
+	}
+	
+	@Column(name = "CLI_FECHANAC")
+	public String getFechaNacimiento() {
+		return fechaNacimiento;
+	}
+
+	public void setFechaNacimiento(String fechaNacimiento) {
+		this.fechaNacimiento = fechaNacimiento;
+	}
+
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "PERS_ID_COMIC")
+	@JoinColumn(name = "CLI_ID_COMIC")
 	public Comic getComic() {
-		return comic;
+		return comics;
 	}
 
 	/**
 	 * @param comic the comic to set
 	 */
 	public void setComic(Comic comic) {
-		this.comic = comic;
+		this.comics = comic;
 	}
-
-
-	/**
-	 * Metodo encargado de retornar el valor del atributo estado
-	 * 
-	 * @return El estado asociado a la clase
-	 */
-	@Column(name = "PERS_ESTADO")
-	@Enumerated(value = EnumType.STRING)
-	public EstadoEnum getEstado() {
-		return estado;
-	}
-
-	/**
-	 * @param estado the estado to set
-	 */
-	public void setEstado(EstadoEnum estado) {
-		this.estado = estado;
-	}
-
-	/**
-	 * Metodo encargado de retornar el valor del atributo superPoder
-	 * 
-	 * @return El superPoder asociado a la clase
-	 */
-	@Column(name = "PERS_SUPERPODER")
-	public String getSuperPoder() {
-		return superPoder;
-	}
-
-	/**
-	 * @param superPoder the superPoder to set
-	 */
-	public void setSuperPoder(String superPoder) {
-		this.superPoder = superPoder;
-	}
-
+	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -150,8 +125,8 @@ public class Personaje implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return "Personaje [id=" + id + ", nombre=" + nombre + ", comic=" + comic + ", estado=" + estado
-				+ ", superPoder=" + superPoder + "]";
+		return "Cliente [id=" + id + ", nombre=" + nombre + ", tipoDocumento=" + tipoDocumento + ", numeroDoc=" + numeroDoc
+				+ ", fechaNacimiento=" + fechaNacimiento + ", comics=" + comics + "]";
 	}
 
 	/*
@@ -168,11 +143,11 @@ public class Personaje implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((comic == null) ? 0 : comic.hashCode());
-		result = prime * result + ((estado == null) ? 0 : estado.hashCode());
+		result = prime * result + ((comics == null) ? 0 : comics.hashCode());
+		result = prime * result + ((numeroDoc == null) ? 0 : numeroDoc.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
-		result = prime * result + ((superPoder == null) ? 0 : superPoder.hashCode());
+		result = prime * result + ((fechaNacimiento == null) ? 0 : fechaNacimiento.hashCode());
 		return result;
 	}
 
@@ -190,14 +165,7 @@ public class Personaje implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Personaje other = (Personaje) obj;
-		if (comic == null) {
-			if (other.comic != null)
-				return false;
-		} else if (!comic.equals(other.comic))
-			return false;
-		if (estado != other.estado)
-			return false;
+		Cliente other = (Cliente) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -208,11 +176,12 @@ public class Personaje implements Serializable {
 				return false;
 		} else if (!nombre.equals(other.nombre))
 			return false;
-		if (superPoder == null) {
-			if (other.superPoder != null)
+		if (numeroDoc == null) {
+			if (other.numeroDoc != null)
 				return false;
-		} else if (!superPoder.equals(other.superPoder))
+		} else if (!fechaNacimiento.equals(other.fechaNacimiento))
 			return false;
 		return true;
 	}
+
 }
